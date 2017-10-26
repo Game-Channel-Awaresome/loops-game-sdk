@@ -10,7 +10,8 @@
   "dependencies": {
     "koa": "^2.3.0",
     "koa-cors": "0.0.16",
-    "koa-http-request": "^2.2.0"
+    "koa-http-request": "^2.2.0",
+    "axios": "^0.17.0"
   },
   "repository": {
     "type": "git",
