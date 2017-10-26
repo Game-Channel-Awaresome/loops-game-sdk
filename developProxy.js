@@ -5,7 +5,7 @@ import { SDKConfig } from './config';
 
 export const DevProxy = (function() {
   //let server_host = "https://apiloopstest.shabikplus.mozat.com";
-  let server_host = 'http://localhost:3000/';
+  let server_host = 'http://localhost:8000/';
   let server_sig = '&sig=bf6b13bd37ec4173b7b075dc92bf989a';
   let zone_req = '&zone=sa';
   //let server_host = "http://192.168.128.62:2080";
