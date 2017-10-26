@@ -68,7 +68,7 @@ export const DevProxy = (function() {
       clearInterval(window.broadcastTimeInterval);
     }
     window.broadcastTimeInterval = setInterval(() => {
-      let url = server_host + api_game_broadcast + '?uid=' + getSessionDataImpl('user_id') + server_sig + zone_req;
+      let url = server_host + api_game_broadcast + '?uid=' + getSessionDataImpl('user_id') + server_sig;
       let requestData = genCommonRequestData();
       requestData.round_id = localStorage.getItem(SDKConfig.LOCALSTORAGE_ROUND_ID_KEY);
       stateData.state_id = stateId;

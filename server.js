@@ -3,7 +3,7 @@ const koa = require('koa');
 const koaRequest = require('koa-http-request');
 const cors = require('koa-cors');
 const app = new koa();
-let proxyHost = 'https://apiloopstest.shabikplus.mozat.com/';
+let proxyHost = 'https://api-test.loopslive.com/1.0/';
 //proxyHost = "http://172.28.2.144:2080";
 const axios = require('axios');
 app.use(cors());
