@@ -5,7 +5,7 @@ import { SDKConfig } from './config';
 
 export const DevProxy = (function() {
   //let server_host = "https://apiloopstest.shabikplus.mozat.com";
-  let server_host = 'http://localhost:8000/';
+  let server_host = 'http://localhost:8000';
   let server_sig = '&sig=bf6b13bd37ec4173b7b075dc92bf989a';
   let zone_req = '&zone=sa';
   //let server_host = "http://192.168.128.62:2080";
@@ -405,7 +405,7 @@ export const DevProxy = (function() {
   /**
    * 请求播放一条声音，并指定循环次数。
    * @param path 为声音完整路径，无须后缀名。如：/media/bgm
-   * @param 循环次数，repeat=1 表示一共播放 2 遍，0 表示不重复，-1 表示无限循环重复播放。
+   * @param repeat 循环次数，repeat=1 表示一共播放 2 遍，0 表示不重复，-1 表示无限循环重复播放。
    * @param {Function} onPlayingCallback(playObj) 是一个回调，playObj 结构为 {'track_id':INT}, trackId 可用于调用 stopPlaying。
    */
   function playSoundImpl(path, repeat, onPlayingCallback) {
@@ -464,7 +464,7 @@ export const DevProxy = (function() {
       identifys[i].onclick = () => {
         let val = identifys[i].value;
         identifyValue = val;
-        if (val == 0) {
+        if (val === 0) {
           //host
           hostIdWrap.style.display = 'block';
           watcherIdWrap.style.display = 'none';
@@ -503,7 +503,7 @@ export const DevProxy = (function() {
         }
         if (isHost) {
           if (window[SDKConfig.GLOBE_HOST_MESSAGE_CALLBACK_KEY].callback
-            && window[SDKConfig.GLOBE_HOST_MESSAGE_CALLBACK_KEY].latestMessage != wsData) {
+            && window[SDKConfig.GLOBE_HOST_MESSAGE_CALLBACK_KEY].latestMessage !== wsData) {
             let wsDataObj = JSON.parse(wsData);
             //todo move from and target logic to game side
             if (wsDataObj.msgType == 201) {
@@ -519,8 +519,8 @@ export const DevProxy = (function() {
           }
         } else {
           if (window[SDKConfig.GLOBE_WATCHER_MESSAGE_CALLBACK_KEY] && window[SDKConfig.GLOBE_WATCHER_MESSAGE_CALLBACK_KEY].callback
-            && window[SDKConfig.GLOBE_WATCHER_MESSAGE_CALLBACK_KEY].latestMessage != wsData) {
-            if (JSON.parse(wsData).msgType != 202) {
+            && window[SDKConfig.GLOBE_WATCHER_MESSAGE_CALLBACK_KEY].latestMessage !== wsData) {
+            if (JSON.parse(wsData).msgType !== 202) {
               //only handle broadcast message
               return;
             }
@@ -531,7 +531,7 @@ export const DevProxy = (function() {
 
       };
 
-      if (identifyValue == 0) {
+      if (identifyValue === 0) {
         //host
         sessionDatas.host_id = parseInt(hostId);
         sessionDatas.user_id = parseInt(hostId);
@@ -559,7 +559,7 @@ export const DevProxy = (function() {
           if (data && data.game_infos) {
             for (let i = 0; i < data.game_infos.length; i++) {
               let gameObj = data.game_infos[i];
-              if (gameObj.id == gameId && gameObj.settings) {
+              if (gameObj.id === gameId && gameObj.settings) {
                 sessionDatas.game_settings = JSON.parse(gameObj.settings);
                 break
               } else {
