@@ -40,8 +40,8 @@ app.use(async (ctx, next) => {
   console.log(ctx.method);
   //let data = {"game_id":5,"host_id":200321,"session_id":"game-session-368-200321","round_id":"2595","setting":{"fee":0,"host_raise_fee":0,"join_method":0,"max_player":20}};
 
-  if (ctx.method.toLowerCase() == 'get') {
-    let repo = await ctx.get(proxyHost + ctx.url, null, {
+  if (ctx.method.toLowerCase() === 'get') {
+    const repo = await ctx.get(proxyHost + ctx.url, null, {
       'User-Agent': 'koa-http-request',
     });
     ctx.body = repo;
