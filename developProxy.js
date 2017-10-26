@@ -5,7 +5,7 @@ import { SDKConfig } from './config';
 
 export const DevProxy = (function() {
   //let server_host = "https://apiloopstest.shabikplus.mozat.com";
-  let server_host = 'http://localhost:8000';
+  let server_host = 'http://localhost:8000/';
   let server_sig = '&sig=bf6b13bd37ec4173b7b075dc92bf989a';
   let zone_req = '&zone=sa';
   //let server_host = "http://192.168.128.62:2080";
@@ -68,7 +68,7 @@ export const DevProxy = (function() {
       clearInterval(window.broadcastTimeInterval);
     }
     window.broadcastTimeInterval = setInterval(() => {
-      let url = server_host + api_game_broadcast + '?uid=' + getSessionDataImpl('user_id') + server_sig;
+      let url = server_host + api_game_broadcast + '?uid=' + getSessionDataImpl('user_id') + server_sig + zone_req;
       let requestData = genCommonRequestData();
       requestData.round_id = localStorage.getItem(SDKConfig.LOCALSTORAGE_ROUND_ID_KEY);
       stateData.state_id = stateId;
