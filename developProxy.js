@@ -70,9 +70,9 @@ export const DevProxy = (function() {
     window.broadcastTimeInterval = setInterval(() => {
       let url = server_host + api_game_broadcast + '?uid=' + getSessionDataImpl('user_id') + server_sig + zone_req;
       let requestData = genCommonRequestData();
-      requestData.round_id = localStorage.getItem(SDKConfig.LOCALSTORAGE_ROUND_ID_KEY);
+      requestData.round_id = localStorage.getItem(SDKConfig.LOCALSTORAGE_ROUND_ID_KEY) || '';
       stateData.state_id = stateId;
-      stateData.round_id = localStorage.getItem(SDKConfig.LOCALSTORAGE_ROUND_ID_KEY);
+      stateData.round_id = localStorage.getItem(SDKConfig.LOCALSTORAGE_ROUND_ID_KEY) || '';
       requestData.game_data = JSON.stringify(stateData);
       //console.log(JSON.stringify(requestData));
       fetch(url, {
@@ -182,7 +182,7 @@ export const DevProxy = (function() {
     ret.game_id = sessionDatas['game_id'];
     ret.host_id = sessionDatas['host_id'];
     ret.session_id = sessionDatas['session_id'];
-    ret.round_id = localStorage.getItem(SDKConfig.LOCALSTORAGE_ROUND_ID_KEY);
+    ret.round_id = localStorage.getItem(SDKConfig.LOCALSTORAGE_ROUND_ID_KEY) || '';
     return ret;
   }
 
